@@ -103,6 +103,12 @@ alert("Error"+error);
 }
      
     const takePhotoFromCamera = () => {
+
+      if(this.state.serialNo.length == 0 && this.state.assetID.length == 0)
+      {
+
+      }
+else{     
       ImagePicker.openCamera({
       compressImageMaxWidth: 300,
       compressImageMaxHeight: 300,
@@ -154,7 +160,7 @@ alert("Error"+error);
   
   
   }
- 
+}
   
   
   const choosePhotoFromLibrary = () => {
@@ -299,9 +305,9 @@ alert("Error"+error);
     <TouchableOpacity style={styles.panelButton} onPress={choosePhotoFromLibrary}>
       <Text style={styles.panelButtonTitle}>Choose From Library</Text>
     </TouchableOpacity>
-    {/* <TouchableOpacity style={styles.panelButton}  onPress={viewImage}>
+    <TouchableOpacity style={styles.panelButton}  onPress={viewImage}>
       <Text style={styles.panelButtonTitle}>View Existing uploads</Text>
-    </TouchableOpacity> */}
+    </TouchableOpacity>
   
   </View>
   )
