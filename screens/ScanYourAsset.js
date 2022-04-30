@@ -3,7 +3,8 @@ import React,  { Component }from 'react'
 import ImagePicker from 'react-native-image-crop-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LottieView from 'lottie-react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 export default class ScanYourAsset extends Component {
 
 
@@ -14,6 +15,22 @@ export default class ScanYourAsset extends Component {
       this.state={empId:'',path:'', assetID:'',serialNo:''};
   }
 
+  static navigationOptions = ({navigation}) => {
+    return {
+        
+headerLeft:(<HeaderBackButton size={20} onPress={()=>{navigation.navigate('Home')}}  color="#fff" tintColor="#fff"/>),
+    headerStyle: {
+      backgroundColor: 'rgb(0, 145, 234)',
+  },
+  headerTintColor: 'white',
+  headerTitleStyle: 
+  {
+    fontWeight: 'bold',
+    color:'white' ,
+    //paddingTop:"2%",
+  },  
+    }
+}
 
     
   render() {
@@ -104,11 +121,12 @@ alert("Error"+error);
      
     const takePhotoFromCamera = () => {
 
-      if(this.state.serialNo.length == 0 && this.state.assetID.length == 0)
-      {
 
+      if(this.state.assetID.length == 0 || this.state.serialNo.length == 0)
+      {
+         Alert.alert("Please fill required details","Required field is missinng");
       }
-else{     
+      else{
       ImagePicker.openCamera({
       compressImageMaxWidth: 300,
       compressImageMaxHeight: 300,
@@ -160,10 +178,16 @@ else{
   
   
   }
+ 
 }
   
-  
   const choosePhotoFromLibrary = () => {
+
+    if(this.state.assetID.length == 0 || this.state.serialNo.length == 0)
+    {
+       Alert.alert("Please fill required details","Required field is missinng");
+    }
+    else{
     ImagePicker.openPicker({
       width: 300,
       height: 300,
@@ -226,11 +250,17 @@ else{
   
   }
  
-  
+}
    
     return (
 
       <View style={styles.panel}>
+         <View style={styles.header2}>
+           <TouchableOpacity onPress={()=>this.props.navigation.navigate('HomePage')}>
+            <Icon name="chevron-left" color="black" size={35}/>
+            {/* <Text style={{paddingLeft:55,fontWeight:'bold',color:'#00237D',fontSize:20,position:'absolute',marginTop:-20}}>Back</Text>  */}
+            </TouchableOpacity>
+             </View>
       <TouchableOpacity 
   style={{alignItems:'center',}}>
    <View style={{ alignItems: 'center',
@@ -250,7 +280,7 @@ else{
 <View style={styles.input}>
 
 <Icon 
-                                name="lock-closed-outline"
+                                name="laptop"
                                 color="#374b92"
                                 size={20}
                               
@@ -273,7 +303,7 @@ else{
 <View style={styles.input}>
 
 <Icon 
-                                name="lock-closed-outline"
+                                name="laptop"
                                 color="#374b92"
                                 size={20}
                               
@@ -305,9 +335,9 @@ else{
     <TouchableOpacity style={styles.panelButton} onPress={choosePhotoFromLibrary}>
       <Text style={styles.panelButtonTitle}>Choose From Library</Text>
     </TouchableOpacity>
-    <TouchableOpacity style={styles.panelButton}  onPress={viewImage}>
+    {/* <TouchableOpacity style={styles.panelButton}  onPress={viewImage}>
       <Text style={styles.panelButtonTitle}>View Existing uploads</Text>
-    </TouchableOpacity>
+    </TouchableOpacity> */}
   
   </View>
   )
@@ -324,7 +354,7 @@ const styles = StyleSheet.create({
     bottom:0,
     padding: 20,
  
-    paddingTop: 20,
+
     position: 'absolute',
     flex:100,
     left: 0,
@@ -369,7 +399,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#D3D3D3',
     flexDirection:'row',
     paddingHorizontal:15,
-  
+    width:'100%',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     borderTopLeftRadius: 20,
@@ -380,7 +410,15 @@ const styles = StyleSheet.create({
     marginVertical:7,
     fontSize:14,
     
-  }
+  },
+  header2: {
+     
+    width:'100%',
+   
+
+  
+    justifyContent:'center',
+  },
  
  
 });

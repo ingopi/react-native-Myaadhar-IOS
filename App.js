@@ -20,7 +20,7 @@ import SignInScreen from './screens/SignInScreen';
 import SplashScreen from './screens/SplashScreen';
 import AgencyLogin from './screens/AgencyLogin';
 import BusinessCard from './screens/BusinessCard';
-//import OtpScreen from './screens/OtpScreen';
+import OtpScreen from './screens/OtpScreen';
 // import Waste from './screens/Waste';
 const Drawer = createDrawerNavigator();
 
@@ -33,30 +33,33 @@ function Root() {
 }
  export default function App() {
 
+  // const [connectStatus, setConnectStatus] = useState(false)
+  // checkConnected().then(res => {
+  //   setConnectStatus(res)
+  // })
   return (
 
   
     <NavigationContainer>
   
-  <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}  
+  <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}  screenOptions={{swipeEnabled: false}} 
   drawerStyle={{backgroundColor:'transparent'}}
   >
-  <Drawer.Screen name="Home" component={Root} />
-  <Drawer.Screen name="AgencyLogin" component={AgencyLogin} />
-  <Drawer.Screen name="Profile" component={Profile} />
-   <Drawer.Screen name="CrmScreen" component={CrmScreen} />
-   <Drawer.Screen name="SaphireScreen" component={SaphireScreen} />
-   <Drawer.Screen name="LoanScreen" component={LoanScreen} />
-   <Drawer.Screen name="ReferralPage" component={ReferralPage} />
-   <Drawer.Screen name="ScanYourAsset" component={ScanYourAsset} />
-   <Drawer.Screen name="ViewImageScreen" component={ViewImageScreen} />
-   <Drawer.Screen name="Workline" component={Workline} />
-   <Drawer.Screen name="PasswordReset" component={PasswordReset} />
-   <Drawer.Screen name="BusinessCard" component={BusinessCard} />
-   <Drawer.Screen name="HomePage" component={HomePage} />
-   <Drawer.Screen name="SignInScreen" component={SignInScreen} />
-   <Drawer.Screen name="SplashScreen" component={SplashScreen} />
 
+  <Drawer.Screen name="Home" component={Root} />
+  <Drawer.Screen name="AgencyLogin" component={AgencyLogin} options={{swipeEnabled:true}}/>
+  <Drawer.Screen name="Profile" component={Profile}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="CrmScreen" component={CrmScreen}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="SaphireScreen" component={SaphireScreen}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="LoanScreen" component={LoanScreen}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="ReferralPage" component={ReferralPage} options={{swipeEnabled:true}}/>
+   <Drawer.Screen name="ScanYourAsset" component={ScanYourAsset}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="ViewImageScreen" component={ViewImageScreen}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="Workline" component={Workline}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="PasswordReset" component={PasswordReset}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="BusinessCard" component={BusinessCard}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="HomePage" component={HomePage} options={{swipeEnabled:true}}/>
+  
  </Drawer.Navigator>
 
    

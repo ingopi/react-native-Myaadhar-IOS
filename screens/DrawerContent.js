@@ -30,7 +30,7 @@ export function DrawerContent(props) {
     colors={['rgba(255,255,255,0.6)','rgba(255,255,255,0.5)','rgba(255,255,255,0.5)','rgba(255,255,255,0.5)']}
   
     center={[100,100]}
-    radius={500}>
+    radius={600}>
        <BlurView
           style={styles.absolute}
           blurType="light"
@@ -99,7 +99,7 @@ export function DrawerContent(props) {
                                 />
                             )}
                             label="CRM"
-                            onPress={() => {props.navigation.navigate('test')}}
+                            onPress={() => {props.navigation.navigate('CrmScreen')}}
                         />
                         
                         <DrawerItem 
