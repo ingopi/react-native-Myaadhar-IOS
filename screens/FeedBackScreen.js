@@ -15,6 +15,7 @@ import {
     Image,
     Alert
   } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default class ReferralPage extends Component
 
 {
@@ -106,8 +107,12 @@ export default class ReferralPage extends Component
         });
 
         return(
-            <View style={styles.container}>
-         
+          
+            <SafeAreaView style={styles.container}>
+            <View style={styles.header2}>
+            <Icon name="chevron-left" color="black" size={35} onPress={()=>this.props.navigation.navigate('HomePage')}  />
+             </View>
+          
          <View style={{ alignItems: 'center',
     justifyContent: 'center',}}>
   <LottieView source={require('../assets/feedback.json')} style={{height:200,width:200,alignContent:'center'}} autoPlay loop />
@@ -188,7 +193,7 @@ export default class ReferralPage extends Component
                 <Text style={styles.panelButtonTitle}>Submit</Text>
               </TouchableOpacity>
            
-          </View>
+          </SafeAreaView>
         );
       };
       
@@ -281,5 +286,13 @@ export default class ReferralPage extends Component
           marginTop: Platform.OS === 'ios' ? 0 : -12,
           paddingLeft: 10,
           color: '#05375a',
+        },
+        header2: {
+        
+          width:'100%',
+          height:50,
+          top:0,
+        
+          justifyContent:'center',
         },
       });

@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View ,TouchableOpacity, SafeAreaView} from 'react-native'
 import React,  { Component }from 'react'
-
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { WebView } from 'react-native-webview';
 import Loader from '../utils/Loader';
 export default class BusinessCard extends Component {
@@ -32,14 +32,22 @@ componentDidMount = async () => {
   
    
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
+          <View  style={styles.header2}>
+             <TouchableOpacity style={{width:'30%',height:'100%',marginTop:'5%'}} 
+             onPress={()=>this.props.navigation.navigate('HomePage')}>
+             <Icon style={styles.menu} name="chevron-left" color="#00237D" size={40} />
+         <Text style={{justifyContent:'center',alignContent:'center',paddingLeft:55,paddingTop:7,fontWeight:'bold',color:'#00237D',fontSize:20}}>Back</Text> 
+             </TouchableOpacity>
+          
+             </View>
         <Loader loading={this.state.isLoading}/>
       <WebView
       source={{uri: 'https://dev.anoorcloud.in/Ajinkya_Shinde/'}}
       style={{marginTop: 20}}
      
     />
- </View>
+ </SafeAreaView>
     )
   
   }
@@ -51,7 +59,23 @@ componentDidMount = async () => {
 const styles = StyleSheet.create({
  
  container:{
-   flex:1
- }
- 
+   flex:1,
+  backgroundColor:'white'
+},
+header2: {
+       
+ width:'100%',
+ height:30,
+ top:0,
+
+ justifyContent:'center',
+},
+menu:{
+ alignSelf: 'flex-start',
+ position:'absolute',
+ paddingLeft:20,
+
+
+
+},
 });

@@ -278,10 +278,7 @@ backgroundColor: '#e7e7e7',
     borderTopRightRadius: 30,
     backgroundColor:"white",
     borderBottomRightRadius:30,
-    borderBottomLeftRadius: 30,
-    shadowColor: "#000000",
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
+    borderBottomLeftRadius: 30
     
   },
 both:{

@@ -33,16 +33,14 @@ function Root() {
 }
  export default function App() {
 
-  // const [connectStatus, setConnectStatus] = useState(false)
-  // checkConnected().then(res => {
-  //   setConnectStatus(res)
-  // })
   return (
 
   
     <NavigationContainer>
   
-  <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+  <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}  
+  drawerStyle={{backgroundColor:'transparent'}}
+  >
   <Drawer.Screen name="Home" component={Root} />
   <Drawer.Screen name="AgencyLogin" component={AgencyLogin} />
   <Drawer.Screen name="Profile" component={Profile} />

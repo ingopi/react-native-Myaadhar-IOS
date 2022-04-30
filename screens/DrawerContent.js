@@ -1,14 +1,9 @@
 import { StyleSheet,View ,Image} from 'react-native'
 import React from 'react'
 import {
-    Avatar,
-    Title,
-    Caption,
-    Paragraph,
+   
     Drawer,
-    Text,
-    TouchableRipple,
-    Switch
+   
 
 } from 'react-native-paper';
 import {
@@ -17,6 +12,9 @@ import {
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { BlurView} from "@react-native-community/blur";
+
+import RadialGradient from 'react-native-radial-gradient';
 export function DrawerContent(props) {
 
   const loggedOut = () =>{
@@ -27,7 +25,19 @@ export function DrawerContent(props) {
 
   }
   return (
-    <View style={{flex:1}}>
+    
+    <RadialGradient style={{flex:1}}
+    colors={['rgba(255,255,255,0.6)','rgba(255,255,255,0.5)','rgba(255,255,255,0.5)','rgba(255,255,255,0.5)']}
+  
+    center={[100,100]}
+    radius={500}>
+       <BlurView
+          style={styles.absolute}
+          blurType="light"
+          blurAmount={50}
+          reducedTransparencyFallbackColor="white"
+        />
+       
         <DrawerContentScrollView {...props}>
             <View style={styles.drawerContent}>
           
@@ -46,12 +56,25 @@ export function DrawerContent(props) {
             <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
+                                name="home-outline"
+                                color="#00237D"
+                                size={size}
+                                />
+                            )}
+
+                            label="HOME"
+                            onPress={() => {props.navigation.navigate('HomePage')}}
+                        />
+            <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
                                 name="person-outline"
                                 color="#00237D"
                                 size={size}
                                 />
                             )}
-                            label="Profile"
+
+                            label="PROFILE"
                             onPress={() => {props.navigation.navigate('Profile')}}
                         />
 
@@ -64,7 +87,7 @@ export function DrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="Scan your Assets"
+                            label="UPLOAD ASSETS"
                             onPress={() => {props.navigation.navigate('ScanYourAsset')}}
                         />
                         <DrawerItem 
@@ -87,7 +110,7 @@ export function DrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="IT Helpdesk"
+                            label="IT HELPDESK"
                             onPress={() => {props.navigation.navigate('SaphireScreen')}}
                         />
                         <DrawerItem 
@@ -98,7 +121,7 @@ export function DrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="Refer your Friend"
+                            label="REFFER JOB"
                             onPress={() => {props.navigation.navigate('ReferralPage')}}
                         />
 
@@ -110,7 +133,7 @@ export function DrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="Workline"
+                            label="WORKLINE"
                             onPress={() => {props.navigation.navigate('Workline')}}
                         />
 
@@ -122,7 +145,7 @@ export function DrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="Password Reset"
+                            label="PASSWORD RESET"
                             onPress={() => {props.navigation.navigate('PasswordReset')}}
                         />
 
@@ -134,7 +157,9 @@ export function DrawerContent(props) {
                                 size={size}
                                 />
                             )}
-                            label="Business Card"
+                          
+                           
+                            label="BUSINESS CARD"
                         onPress={() => {props.navigation.navigate('BusinessCard')}}
                         />
                       
@@ -154,12 +179,12 @@ export function DrawerContent(props) {
               size={size}
               />
               )} 
-            label="Sign Out"
+            label="SIGN OUT"
             onPress={loggedOut}
             />
             </Drawer.Section>
-     
-    </View>
+            </RadialGradient>
+ 
   );
 }
 
@@ -209,4 +234,11 @@ const styles = StyleSheet.create({
       paddingVertical: 12,
       paddingHorizontal: 16,
     },
+    absolute: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0
+    }
   });
