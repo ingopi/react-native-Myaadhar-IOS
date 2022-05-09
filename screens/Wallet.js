@@ -1,13 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
-
+import { SafeAreaView } from 'react-native-safe-area-context'
+import LottieView from 'lottie-react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const Wallet = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
     
-      <Text style={styles.text}>Wallet under Maintainance</Text>
+       <View style={{ alignItems: 'center',
+    justifyContent: 'center',}}>
+  <LottieView source={require('../assets/waiting.json')} style={{height:200,width:200,alignContent:'center'}} autoPlay loop />
+   </View>
    
-  </View>
+  </SafeAreaView>
   )
 }
 
@@ -15,7 +20,9 @@ export default Wallet
 
 const styles = StyleSheet.create({
     container: {
-       height:'100%'
+      flex:1,
+      alignContent:'center',
+      justifyContent:'center'
       },
       text: {
         color: "white",
@@ -25,5 +32,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         justifyContent:'center',
         backgroundColor: "#000000c0"
+        
       }
     });

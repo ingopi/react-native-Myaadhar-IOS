@@ -2,8 +2,7 @@
 import React, {useState} from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import ReferralPage  from './screens/ReferralPage';
+
 import CrmScreen from './screens/CrmScreen';
 import SaphireScreen from './screens/SaphireScreen';
 import HomePage from './screens/HomePage';
@@ -16,11 +15,12 @@ import Profile from './screens/Profile';
 import PasswordReset from './screens/PasswordReset';
 import Workline from './screens/Workline';
 import ViewImageScreen from './screens/ViewImageScreen';
-import SignInScreen from './screens/SignInScreen';
-import SplashScreen from './screens/SplashScreen';
 import AgencyLogin from './screens/AgencyLogin';
 import BusinessCard from './screens/BusinessCard';
-import OtpScreen from './screens/OtpScreen';
+import FeedBackScreen from './screens/FeedBackScreen';
+import Wallet from './screens/Wallet';
+import Notifications from './screens/Notifications';
+import ReferralPage from './screens/ReferralPage';
 // import Waste from './screens/Waste';
 const Drawer = createDrawerNavigator();
 
@@ -43,7 +43,7 @@ function Root() {
     <NavigationContainer>
   
   <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}  screenOptions={{swipeEnabled: false}} 
-  drawerStyle={{backgroundColor:'transparent'}}
+    drawerStyle={{backgroundColor:'transparent'}}
   >
 
   <Drawer.Screen name="Home" component={Root} />
@@ -58,6 +58,9 @@ function Root() {
    <Drawer.Screen name="Workline" component={Workline}options={{swipeEnabled:true}} />
    <Drawer.Screen name="PasswordReset" component={PasswordReset}options={{swipeEnabled:true}} />
    <Drawer.Screen name="BusinessCard" component={BusinessCard}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="Wallet" component={Wallet}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="Notifications" component={Notifications}options={{swipeEnabled:true}} />
+   <Drawer.Screen name="FeedBackScreen" component={FeedBackScreen}options={{swipeEnabled:true}} />
    <Drawer.Screen name="HomePage" component={HomePage} options={{swipeEnabled:true}}/>
   
  </Drawer.Navigator>

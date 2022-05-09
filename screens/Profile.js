@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import React, { useEffect, useState, Component} from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LottieView from 'lottie-react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default class Profile extends Component {
 
 
@@ -59,16 +60,9 @@ render()
     });
      
   return (
-    // <View>
-    //   <Text>NOOOO</Text>
-    //   <Text>{this.state.employeeName}</Text>
-    //   <Text>{this.state.city}</Text>
-    //   <Text>{this.state.department}</Text>
-    //   <Text>{this.state.email}</Text>
-    //   <Text>{this.state.empId}</Text>
-    // </View>
 
-    <View style={styles.container}>
+
+    <SafeAreaView style={styles.container}>
      
     <View style={{alignItems: 'center'}}>
       <TouchableOpacity >
@@ -185,7 +179,7 @@ value={this.state.email}
    
   
  
-</View>
+</SafeAreaView>
 
   );
 }

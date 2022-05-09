@@ -4,7 +4,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import Loader from '../utils/Loader';
 import {
     View,
     Text,
@@ -15,6 +15,7 @@ import {
     Image,
     Alert
   } from 'react-native';
+import DismissKeyboard from '../utils/DismissKeyboard';
 import { SafeAreaView } from 'react-native-safe-area-context';
 export default class ReferralPage extends Component
 
@@ -23,7 +24,7 @@ export default class ReferralPage extends Component
     constructor(props)
     {
         super(props);
-        this.state={name:'',email:'',mobile:'',jobRole:'',employeeName:''};
+        this.state={name:'',email:'',mobile:'',jobRole:'',employeeName:'',isLoading:false};
     }
 
 
@@ -42,6 +43,7 @@ export default class ReferralPage extends Component
         }
         else
         {
+          this.setState({isLoading:true}) 
                  var API="https://apmuat.aadharhousing.com/asset/public/api/Asset";
                  
             
@@ -66,13 +68,15 @@ export default class ReferralPage extends Component
            .then((response)=>response.json())
            .then((response)=>
              {
+              this.setState({isLoading:false})
                  Alert.alert("Successfully submitted","Your Referral has been Submitted");
              }
             
            )
            .catch((error)=>{
          console.log(error)
-            alert("Error"+error);
+         this.setState({isLoading:false})
+            Alert.alert("Oops!","Something went wrong");
            })
         }
     }
@@ -107,9 +111,14 @@ export default class ReferralPage extends Component
         });
 
         return(
+          <DismissKeyboard>
             <SafeAreaView style={styles.container}>
+            <Loader loading={this.state.isLoading}/>
           <View style={styles.header2}>
-            <Icon name="chevron-left" color="black" size={35} onPress={()=>this.props.navigation.navigate('HomePage')}  />
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate('HomePage')}>
+            <Icon name="chevron-left" color="black" size={35}/>
+            <Text style={{paddingLeft:30,fontWeight:'bold',color:'#00237D',fontSize:20,position:'absolute',marginTop:5}}>Back</Text> 
+            </TouchableOpacity>
              </View>
          <View style={{ alignItems: 'center',
     justifyContent: 'center',}}>
@@ -123,7 +132,7 @@ export default class ReferralPage extends Component
               </View>
       
               <View style={styles.action}>
-                <FontAwesome name="user-o"  size={20} />
+                <FontAwesome name="users"  size={20} />
                 <TextInput
                   placeholder="Enter your Friend's Name"
                   placeholderTextColor="#666666"
@@ -131,7 +140,7 @@ export default class ReferralPage extends Component
                   style={[
                     styles.textInput,
                     {
-                      color: 'blue',
+                      color: 'black',
                     },
                   ]}
                   onChangeText={name=>this.setState({name})}
@@ -148,7 +157,7 @@ export default class ReferralPage extends Component
                   style={[
                     styles.textInput,
                     {
-                        color: 'blue',
+                        color: 'black',
                     },
                   ]}
                   onChangeText={email=>this.setState({email})}
@@ -164,14 +173,14 @@ export default class ReferralPage extends Component
                   style={[
                     styles.textInput,
                     {
-                        color: 'blue',
+                        color: 'black',
                     },
                   ]}
                   onChangeText={mobile=>this.setState({mobile})}
                 />
               </View>
               <View style={styles.action}>
-                <FontAwesome name="globe" size={20} />
+              <Icon name="briefcase-outline"  size={20} />
                 <TextInput
                   placeholder="Enter Job role "
                   placeholderTextColor="#666666"
@@ -179,14 +188,14 @@ export default class ReferralPage extends Component
                   style={[
                     styles.textInput,
                     {
-                        color: 'blue',
+                        color: 'black',
                     },
                   ]}
                   onChangeText={jobRole=>this.setState({jobRole})}
                 />
               </View>
               <View style={styles.action}>
-                <Icon name="map-marker-outline"  size={20} />
+              <FontAwesome name="user-o"  size={20} />
                 <TextInput
                   placeholder="Refered by"
                   placeholderTextColor="#666666"
@@ -194,7 +203,7 @@ export default class ReferralPage extends Component
                   style={[
                     styles.textInput,
                     {
-                        color: 'blue',
+                        color: 'black',
                     },
                   ]}
                   editable = {false}
@@ -206,6 +215,7 @@ export default class ReferralPage extends Component
               </TouchableOpacity>
            
           </SafeAreaView>
+          </DismissKeyboard>
         );
       };
       
@@ -288,8 +298,8 @@ export default class ReferralPage extends Component
         },
         action: {
           flexDirection: 'row',
-          marginTop: 10,
-          marginBottom: 10,
+          marginTop: 20,
+          marginBottom: 20,
           borderBottomWidth: 1,
           borderBottomColor: '#f2f2f2',
           paddingBottom: 5,

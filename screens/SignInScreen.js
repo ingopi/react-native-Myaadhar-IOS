@@ -16,7 +16,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import * as Animatable from 'react-native-animatable';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import DismissKeyboard from '../utils/DismissKeyboard';
+import Loader from '../utils/Loader';
 
  export default class SignInScreen extends Component{
 
@@ -25,7 +26,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 constructor(props)
 {
     super(props);
-    this.state={empId:'',fromUserOtp:'',fromCodeOtp:'',city:'',email:'',empId:'',department:'',employeeName:'',firstName:'',personalMobileNo:''};
+    this.state={empId:'',fromUserOtp:'',fromCodeOtp:'',city:'',email:'',empId:'',department:'',employeeName:'',firstName:'',personalMobileNo:'',isLoading:false};
 }
  
 
@@ -44,7 +45,7 @@ GetOtp=()=>
          
         }
         else{
-      
+                  this.setState({isLoading:true})
                  var API="https://myadhp.aadharhousing.com/myaadhar/public/api/verify";
                  
               
@@ -69,7 +70,7 @@ GetOtp=()=>
              {
             
                 console.log("response",response.message);
-
+                 
                 if(response.message=="success")
                 {
                // Alert.alert('Succesfully OTP  sent','OTP has been sent on your registered mobile number');
@@ -96,9 +97,9 @@ GetOtp=()=>
  }
               
 
-
+                this.setState({isLoading:false})
                
-               //  alert('Mobilenumber',this.state.personalMobileNo);
+               
                 this.props.navigation.navigate('OtpScreen',{  
                      city:this.state.city,
                     email:this.state.email,
@@ -114,11 +115,12 @@ GetOtp=()=>
                     
                 });
               //  AsyncStorage.setItem('MainData',JSON.stringify(response));
-              console.log("under the data", data);
+                //console.log("under the data", data);
                 console.log("Reesponse",response);
                 }
                 else{
-                    alert(response.message);
+                    this.setState({isLoading:false})
+                    Alert.alert("Oops!",response.message);
                     }
                 
              }
@@ -126,7 +128,8 @@ GetOtp=()=>
            )
            .catch((error)=>{
          console.log(error)
-            alert("Error"+error);
+         this.setState({isLoading:false})
+            Alert.alert("OOps!"+error);
            })
         }
    }
@@ -141,8 +144,9 @@ GetOtp=()=>
    
     
   return (
-    
+    <DismissKeyboard>
     <View style={styles.container}>
+    <Loader loading={this.state.isLoading}/>
     <StatusBar backgroundColor='#00237D' barStyle="light-content"/>
   <View style={styles.header}>
       <Text style={styles.text_header}>Welcome to Aadhar Family!</Text>
@@ -176,6 +180,7 @@ GetOtp=()=>
               style={[styles.textInput, {
                   color: 'black'
               }]}
+              type="alphanumeric"
               autoCapitalize="none"
               onChangeText={empId=>this.setState({empId})}
               
@@ -244,9 +249,11 @@ paddingHorizontal: 20,
 </View>
         </Animatable.View>
       </View>
+      </DismissKeyboard>
       
     );
 }}
+
 //export default SignInScreen;
 
 const styles = StyleSheet.create({

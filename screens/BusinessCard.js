@@ -1,81 +1,37 @@
-import { StyleSheet, Text, View ,TouchableOpacity, SafeAreaView} from 'react-native'
-import React,  { Component }from 'react'
+import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
+import React from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import LottieView from 'lottie-react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { WebView } from 'react-native-webview';
-import Loader from '../utils/Loader';
-export default class BusinessCard extends Component {
-
-
-  
-  constructor()
-  {
-      super();
-      this.state={
-        isLoading:true,
-      };
-  }
-componentDidMount = async () => {
-
-  setTimeout(() =>{
-   
-     this.setState({isLoading:false})
-
-  },4000)
-
-}
-
+const BusinessCard = () => {
+  return (
+    <SafeAreaView style={styles.container}>
     
-  render() {
-  
- 
- 
-  
+       <View style={{ alignItems: 'center',
+    justifyContent: 'center',}}>
+  <LottieView source={require('../assets/waiting.json')} style={{height:200,width:200,alignContent:'center'}} autoPlay loop />
+   </View>
    
-    return (
-      <SafeAreaView style={styles.container}>
-          <View  style={styles.header2}>
-             <TouchableOpacity style={{width:'30%',height:'100%',marginTop:'5%'}} 
-             onPress={()=>this.props.navigation.navigate('HomePage')}>
-             <Icon style={styles.menu} name="chevron-left" color="#00237D" size={40} />
-         <Text style={{justifyContent:'center',alignContent:'center',paddingLeft:55,paddingTop:7,fontWeight:'bold',color:'#00237D',fontSize:20}}>Back</Text> 
-             </TouchableOpacity>
-          
-             </View>
-        <Loader loading={this.state.isLoading}/>
-      <WebView
-      source={{uri: 'https://dev.anoorcloud.in/Ajinkya_Shinde/'}}
-      style={{marginTop: 20}}
-     
-    />
- </SafeAreaView>
-    )
-  
-  }
+  </SafeAreaView>
+  )
 }
 
-
-   
+export default BusinessCard
 
 const styles = StyleSheet.create({
- 
- container:{
-   flex:1,
-  backgroundColor:'white'
-},
-header2: {
-       
- width:'100%',
- height:30,
- top:0,
-
- justifyContent:'center',
-},
-menu:{
- alignSelf: 'flex-start',
- position:'absolute',
- paddingLeft:20,
-
-
-
-},
-});
+    container: {
+      flex:1,
+      alignContent:'center',
+      justifyContent:'center'
+      },
+      text: {
+        color: "white",
+        fontSize: 42,
+        lineHeight: 84,
+        fontWeight: "bold",
+        textAlign: "center",
+        justifyContent:'center',
+        backgroundColor: "#000000c0"
+        
+      }
+    });

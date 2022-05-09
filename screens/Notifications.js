@@ -1,13 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
-
+import { SafeAreaView } from 'react-native-safe-area-context'
+import LottieView from 'lottie-react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const Notifications = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
     
-      <Text style={styles.text}>Notifications under Maintainance</Text>
+       <View style={{ alignItems: 'center',
+    justifyContent: 'center',}}>
+  <LottieView source={require('../assets/waiting.json')} style={{height:200,width:200,alignContent:'center'}} autoPlay loop />
+   </View>
    
-  </View>
+  </SafeAreaView>
   )
 }
 
@@ -15,7 +20,9 @@ export default Notifications
 
 const styles = StyleSheet.create({
     container: {
-      flex:4
+      flex:1,
+      alignContent:'center',
+      justifyContent:'center'
       },
       text: {
         color: "white",

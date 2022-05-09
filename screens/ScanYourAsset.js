@@ -4,7 +4,9 @@ import ImagePicker from 'react-native-image-crop-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LottieView from 'lottie-react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import DismissKeyboard from '../utils/DismissKeyboard';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export default class ScanYourAsset extends Component {
 
 
@@ -172,7 +174,7 @@ alert("Error"+error);
   fetch("https://myadhp.aadharhousing.com/myaadhar/public/api/multiple-image-upload", requestOptions)
     .then(response => response.text())
     .then(result => Alert.alert("Successfully uploaded","Thank you for the submission"))
-    .catch(error => alert("Something went wrong"));
+    .catch(error => Alert.alert("Oops!","Something went wrong"));
     }
   
   
@@ -242,8 +244,8 @@ alert("Error"+error);
   
   fetch("https://myadhp.aadharhousing.com/myaadhar/public/api/multiple-image-upload", requestOptions)
     .then(response => response.text())
-    .then(result => alert("Successfully uploaded"))
-    .catch(error => alert("Something went wrong"));
+    .then(result => Alert.alert("Successfully uploaded","Thank you for the submission"))
+    .catch(error => Alert.alert("Oops!","Something went wrong"));
     }
   
   
@@ -253,14 +255,14 @@ alert("Error"+error);
 }
    
     return (
-
-      <View style={styles.panel}>
-         <View style={styles.header2}>
-           <TouchableOpacity onPress={()=>this.props.navigation.navigate('HomePage')}>
+<DismissKeyboard>
+      <SafeAreaView style={styles.panel}>
+        
+         
+             <TouchableOpacity onPress={()=>this.props.navigation.navigate('HomePage')}>
             <Icon name="chevron-left" color="black" size={35}/>
-            {/* <Text style={{paddingLeft:55,fontWeight:'bold',color:'#00237D',fontSize:20,position:'absolute',marginTop:-20}}>Back</Text>  */}
+            <Text style={{paddingLeft:30,fontWeight:'bold',color:'#00237D',fontSize:20,position:'absolute',marginTop:5}}>Back</Text> 
             </TouchableOpacity>
-             </View>
       <TouchableOpacity 
   style={{alignItems:'center',}}>
    <View style={{ alignItems: 'center',
@@ -274,18 +276,14 @@ alert("Error"+error);
    </TouchableOpacity>
   <Text style={{textAlign:'center'}}>Please enter Serial no and Asset Id first then upload your asset</Text>
 
-  <View style={{paddingBottom:30}}>
+<View style={{paddingBottom:30}} >
 
  <Text style={styles.label}>Serial no<Text style={{color:'red'}}> *</Text></Text>
-<View style={styles.input}>
+<View style={styles.action}>
 
-<Icon 
-                                name="laptop"
-                                color="#374b92"
-                                size={20}
-                              
-                                />
+
                                 <TextInput
+                                style={styles.input}
  
  placeholder='Enter your Serial No'
  autoCapitalize="none"
@@ -300,16 +298,11 @@ alert("Error"+error);
 
 
 <Text style={styles.label}>Asset Id<Text style={{color:'red'}}> *</Text></Text>
-<View style={styles.input}>
+<View >
 
-<Icon 
-                                name="laptop"
-                                color="#374b92"
-                                size={20}
-                              
-                                />
+
  <TextInput
- 
+ style={styles.input}
  placeholder='Enter your Asset ID'
  autoCapitalize="none"
  onChangeText={assetID=>this.setState({assetID})}
@@ -319,6 +312,10 @@ alert("Error"+error);
  />
 
 </View>
+
+
+
+
 
   </View>
 
@@ -335,11 +332,11 @@ alert("Error"+error);
     <TouchableOpacity style={styles.panelButton} onPress={choosePhotoFromLibrary}>
       <Text style={styles.panelButtonTitle}>Choose From Library</Text>
     </TouchableOpacity>
-    {/* <TouchableOpacity style={styles.panelButton}  onPress={viewImage}>
+     {/* <TouchableOpacity style={styles.panelButton}  onPress={viewImage}>
       <Text style={styles.panelButtonTitle}>View Existing uploads</Text>
-    </TouchableOpacity> */}
-  
-  </View>
+    </TouchableOpacity>    */}
+  </SafeAreaView>
+  </DismissKeyboard>
   )
 }
 
@@ -353,9 +350,6 @@ const styles = StyleSheet.create({
   panel: {
     bottom:0,
     padding: 20,
- 
-
-    position: 'absolute',
     flex:100,
     left: 0,
     right: 0,
@@ -419,6 +413,7 @@ const styles = StyleSheet.create({
   
     justifyContent:'center',
   },
+  
  
  
 });
