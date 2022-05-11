@@ -43,6 +43,18 @@
       "size" : "40x40"
     },
     {
+      "filename" : "adhar_logo_latest (1).jpg",
+      "idiom" : "iphone",
+      "scale" : "1x",
+      "size" : "57x57"
+    },
+    {
+      "filename" : "Webp.net-resizeimage.jpg",
+      "idiom" : "iphone",
+      "scale" : "2x",
+      "size" : "57x57"
+    },
+    {
       "filename" : "Icon-App-60x60@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
@@ -55,7 +67,7 @@
       "size" : "60x60"
     },
     {
-      "filename" : "adhar_logo2.jpg",
+      "filename" : "Adhar_logo_latest.jpg",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

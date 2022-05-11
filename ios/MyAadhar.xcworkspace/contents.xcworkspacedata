@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MyAadhar.xcodeproj">
+      location = "group:/Users/admin/Desktop/MyAadhar/ios/AHFLConnect.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

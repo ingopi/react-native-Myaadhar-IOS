@@ -91,7 +91,35 @@ setModalVisible = (visible) => {
                
                  
     
-                            
+                var API="https://myadhp.aadharhousing.com/myaadhar/public/api/storelog";
+                 
+            
+                fetch(API, 
+                   {
+                       method:'POST',
+       
+                       headers: {
+                           'Accept': 'application/json',
+                           'Content-Type': 'application/json'
+                         },
+                         body: JSON.stringify({
+                           "employeeName":this.state.employeeName,
+                           "empId":this.state.empId,
+                           "department":this.state.department,
+                           "city":this.state.city,
+                            "platform":"IOS"
+                         })
+                   }
+                   )
+               
+          .then((response)=>response.json())
+         
+          .catch((error)=>{
+        console.log(error)
+           alert("Something went wrong please contact AHFL helpdesk"+error);
+          })      
+     
+     
      
      
        console.log("Im from otpscreen",data)

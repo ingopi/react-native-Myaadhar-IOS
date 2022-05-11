@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>My Aadhar</string>
+	<string>AHFL Connect</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -36,11 +36,11 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>My Aadhar requires Camera access</string>
+	<string>AHFL Connect requires Camera access</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Location access is required to run the app </string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>My Aadhar requires Photo Library access</string>
+	<string>AHFL Connect requires Photo Library access</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Feather.ttf</string>

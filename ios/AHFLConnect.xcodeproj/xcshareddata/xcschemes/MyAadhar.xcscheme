@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "MyAadhar.app"
-               BlueprintName = "MyAadhar"
-               ReferencedContainer = "container:MyAadhar.xcodeproj">
+               BuildableName = "AHFLConnect.app"
+               BlueprintName = "AHFLConnect"
+               ReferencedContainer = "container:AHFLConnect.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "MyAadharTests.xctest"
-               BlueprintName = "MyAadharTests"
-               ReferencedContainer = "container:MyAadhar.xcodeproj">
+               BuildableName = "AHFLConnectTests.xctest"
+               BlueprintName = "AHFLConnectTests"
+               ReferencedContainer = "container:AHFLConnect.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "MyAadhar.app"
-            BlueprintName = "MyAadhar"
-            ReferencedContainer = "container:MyAadhar.xcodeproj">
+            BuildableName = "AHFLConnect.app"
+            BlueprintName = "AHFLConnect"
+            ReferencedContainer = "container:AHFLConnect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "MyAadhar.app"
-            BlueprintName = "MyAadhar"
-            ReferencedContainer = "container:MyAadhar.xcodeproj">
+            BuildableName = "AHFLConnect.app"
+            BlueprintName = "AHFLConnect"
+            ReferencedContainer = "container:AHFLConnect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -83,6 +83,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "AHFLConnect"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
