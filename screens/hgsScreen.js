@@ -3,10 +3,11 @@ import React, { Component , useState} from 'react'
 import { SliderBox } from "react-native-image-slider-box";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Storage from 'react-native-expire-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { WebView } from 'react-native-webview';
 import Loader from '../utils/Loader';
-export default class BusinessCard extends Component {
+import Storage from 'react-native-expire-storage';
+export default class hsgScreen extends Component {
 
  
 
@@ -14,7 +15,7 @@ export default class BusinessCard extends Component {
   {
       super(props);
     
-      this.state={empId:'',isLoading:true,};
+      this.state={isLoading:true,};
   }
 
 
@@ -28,40 +29,35 @@ export default class BusinessCard extends Component {
   
   }
   
+  webView = {
+    canGoBack: false,
+    ref: null,
+  }
+
+  onAndroidBackPress = () => {
+    if (this.webView.canGoBack && this.webView.ref) {
+      this.webView.ref.goBack();
+      return true;
+    }
+    return false;
+  }
+
+  componentWillMount() {
+    if (Platform.OS === 'android') {
+      BackHandler.addEventListener('hardwareBackPress', this.onAndroidBackPress);
+    }
+  }
+
+  componentWillUnmount() {
+    if (Platform.OS === 'android') {
+      BackHandler.removeEventListener('hardwareBackPress');
+    }
+  }
 
 
   render() {
     
-   
 
-    const { navigation } = this.props;
-    
-    Storage.getItem('MainData')
-    .then(res =>{
-     if( res !== null){
-
-   //Getting data from local storage
-      this.state.empId = JSON.parse(res).empId;
-   
-   //setting into variable 
-       const empId = this.state.empId;
-     
-   //setting into state
-      this.setState({
-        employeeID:empId,
-       
-      })
-    
-  
-     }
-     else{
-       console.log("something went wrong")
-     }
-    });
-     
-   
-  const link = 'https://myadhp.aadharhousing.com/myaadhar/public/api/businesscard?empId='+this.state.empId;
-     
     return (
  
       <SafeAreaView style={styles.container}>
@@ -75,11 +71,12 @@ export default class BusinessCard extends Component {
         </View>
    <Loader loading={this.state.isLoading}/>
  <WebView
- source={{uri: link}}
+ source={{uri:'https://iess.hgs-bs.com/login.aspx'}}
  style={{marginTop: 20}}
-
+ ref={(webView) => { this.webView.ref = webView; }}
+        onNavigationStateChange={(navState) => { this.webView.canGoBack = navState.canGoBack; }}
 />
-</SafeAreaView>
+ </SafeAreaView>
  
     );
   }

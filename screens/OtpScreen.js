@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import LottieView from 'lottie-react-native';
 import React,{Component} from 'react';
+import Storage from 'react-native-expire-storage';
 import KeyboardAvoidingWrapper from '../utils/KeyboardAvoidingWrapper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -87,7 +88,7 @@ setModalVisible = (visible) => {
            }
           else
           {
-              if(this.state.fromCodeOtp==this.state.fromUserOtp || this.state.fromUserOtp == 3333 ){
+              if(this.state.fromCodeOtp == this.state.fromUserOtp ){
                
                  
     
@@ -107,7 +108,7 @@ setModalVisible = (visible) => {
                            "empId":this.state.empId,
                            "department":this.state.department,
                            "city":this.state.city,
-                            "platform":"IOS"
+                            "platform":"Android"
                          })
                    }
                    )
@@ -120,16 +121,16 @@ setModalVisible = (visible) => {
           })      
      
      
-     
-     
        console.log("Im from otpscreen",data)
             
              
      
        this.props.navigation.navigate('HomePage');
 
-        AsyncStorage.setItem('MainData',JSON.stringify(data));
-                  
+      //  AsyncStorage.setItem('MainData',JSON.stringify(data));
+            Storage.setItem('MainData',JSON.stringify(data) , 10080 * 60);
+            
+           
                   
            }
               else{

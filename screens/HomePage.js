@@ -1,16 +1,14 @@
-import { StyleSheet, Text, View, TouchableOpacity,Dimensions,Image,ScrollView ,SafeAreaView} from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity,Dimensions,Image,ScrollView ,SafeAreaView, BackHandler} from 'react-native'
 import React, { Component , useState} from 'react'
 import { SliderBox } from "react-native-image-slider-box";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import Storage from 'react-native-expire-storage';
 export default class HomePage extends Component {
 
  
 
-  
- 
   constructor(props)
   {
       super(props);
@@ -35,7 +33,7 @@ export default class HomePage extends Component {
 
     const { navigation } = this.props;
     
-    AsyncStorage.getItem('MainData')
+    Storage.getItem('MainData')
     .then(res =>{
      if( res !== null){
 
@@ -74,30 +72,21 @@ export default class HomePage extends Component {
           {/* <Text style={styles.text_header}>Hello {} 👋 </Text>
           <Text style={styles.text_header}>Lets store your asset info</Text> */}
          
-         <Icon style={styles.menu} name="md-menu" color="white" size={35}
+         <Icon style={styles.menu} name="menu" color="white" size={35}
 
          onPress={() => {navigation.openDrawer()}}
          />
          <View style={styles.both}>
-  <Icon style={styles.notification} name="notifications-outline" color="white" size={25}
-  onPress={()=>navigation.navigate('Notifications')}
+  <Icon style={styles.notification} name="ios-notifications-outline" color="white" size={25}
+  onPress={()=>navigation.navigate('Notifications')} 
   />
-  <Icon style={styles.wallet} name="wallet-outline" color="white" size={25}
+  <Icon style={styles.wallet} name="ios-wallet-outline" color="white" size={25}
   onPress={()=>navigation.navigate('Wallet')}
+  
   />
          </View>
         </View>
-{/* 
-    <View  style={styles.content}>
-    <Text style={styles.textStyle}>Name:</Text><Text style={styles.insidecontent} > {employeeName} </Text>
-    <Text style={styles.textStyle}>Employee ID:</Text><Text style={styles.insidecontent}  > {empId} </Text>
-    <Text style={styles.textStyle}>Department:</Text><Text style={styles.insidecontent} > {department} </Text>
-    <Text style={styles.textStyle}>Email ID:</Text><Text style={styles.insidecontent} > {email} </Text>
-    <Text style={styles.textStyle}>City:</Text><Text style={styles.insidecontent}  > {city} </Text>
 
-
-       </View>
-          */}
           <ScrollView>
 
             <View>
@@ -156,18 +145,18 @@ export default class HomePage extends Component {
               <Text  style={styles.textofimage}>Workline</Text>
               
                  </TouchableOpacity>
-    
-                 <TouchableOpacity  onPress={()=>navigation.navigate('PasswordReset')}>
+      
+                 <TouchableOpacity onPress={()=>navigation.navigate('neoScreen')}>
     
     <Image 
     style={styles.images}
     
-    source={require('../assets/reset.png')}
+    source={require('../assets/neo.png')}
     
     />
-    <Text style={styles.textofimage}>Reset</Text>
+    <Text style={styles.textofimage}>Aadhar Neo</Text>
        </TouchableOpacity>
-      
+
                 
     
     
@@ -179,30 +168,32 @@ export default class HomePage extends Component {
 
              <View  style={styles.main}>
              
-             <TouchableOpacity  onPress={()=>navigation.navigate('ScanYourAsset')}>
+             <TouchableOpacity  onPress={()=>navigation.navigate('BusinessCard')}>
               
-          <Image 
-          style={styles.images}
-          source={require('../assets/scan.png')}
-       
-          />
-          <Text  style={styles.textofimage}>Upload asset</Text>
-          
-             </TouchableOpacity>
-
+              <Image 
+              style={styles.images}
+              source={require('../assets/business.png')}
            
-  
-   <TouchableOpacity onPress={()=>navigation.navigate('SaphireScreen')}>
+              />
+              <Text  style={styles.textofimage}>Business{'\n'}card</Text>
+              
+                 </TouchableOpacity>
+
+                 <TouchableOpacity  onPress={()=>navigation.navigate('ScanYourAsset')}>
+              
+              <Image 
+              style={styles.images}
+              source={require('../assets/scan.png')}
+           
+              />
+              <Text  style={styles.textofimage}>Upload asset</Text>
+              
+                 </TouchableOpacity>
     
-    <Image 
-    style={styles.images}
-    source={require('../assets/saphire.png')}
-
-/>
-<Text  style={styles.textofimage}>IT Hepdesk</Text>
-
-   </TouchableOpacity>
-
+           
+           
+   
+              
 
 
 
@@ -227,25 +218,80 @@ source={require('../assets/crmupdated.png')}
    </TouchableOpacity>
     
             
-   <TouchableOpacity  onPress={()=>navigation.navigate('BusinessCard')}>
-              
-              <Image 
-              style={styles.images}
-              source={require('../assets/business.png')}
-           
-              />
-              <Text  style={styles.textofimage}>Business card</Text>
-              
-                 </TouchableOpacity>
+  
     
+                 <TouchableOpacity  onPress={()=>navigation.navigate('PasswordReset')}>
     
+    <Image 
+    style={styles.images}
+    
+    source={require('../assets/reset.png')}
+    
+    />
+    <Text style={styles.textofimage}>Reset</Text>
+       </TouchableOpacity>
+  
     
     
                  </View>
                  
 
 
+
+
+
+
+                 <View  style={styles.main}>
+                 
+                 <TouchableOpacity onPress={()=>navigation.navigate('hgsScreen')}>
+    
+    <Image 
+    style={styles.images}
+    
+    source={require('../assets/hsg.png')}
+    
+    />
+    <Text style={styles.textofimage}>HGS</Text>
+       </TouchableOpacity>
+        
                 
+       <TouchableOpacity  onPress={()=>navigation.navigate('adminScreen')}>
+                  
+                  <Image 
+                  style={styles.images}
+                  source={require('../assets/admin.png')}
+               
+                  />
+                  <Text  style={styles.textofimage}>Admin 4 u</Text>
+                  
+                     </TouchableOpacity>
+        
+        
+        
+        
+                     </View>
+                     
+
+                
+             <View  style={styles.main}>
+                 
+             
+    
+       <TouchableOpacity onPress={()=>navigation.navigate('SaphireScreen')}>
+    
+    <Image 
+    style={styles.images}
+    source={require('../assets/saphire.png')}
+
+/>
+<Text  style={styles.textofimage}>IT Hepdesk</Text>
+
+   </TouchableOpacity>
+
+        
+        
+                     </View>
+                     
 
         </View>
       
@@ -278,7 +324,8 @@ backgroundColor: '#e7e7e7',
     borderTopRightRadius: 30,
     backgroundColor:"white",
     borderBottomRightRadius:30,
-    borderBottomLeftRadius: 30
+    borderBottomLeftRadius: 30,
+   
     
   },
 both:{
@@ -334,14 +381,14 @@ main:{
     marginLeft:20,
     flexDirection: 'row',
 
+
+
   },
   notification:{
    
     marginTop:10,
     marginRight:20,
     marginLeft:20,
-   
-  flexDirection: 'row',
   },
   textofimage:{
      textAlign:'center',

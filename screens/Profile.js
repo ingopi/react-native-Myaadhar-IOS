@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React, { useEffect, useState, Component} from 'react'
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import Storage from 'react-native-expire-storage';
 import LottieView from 'lottie-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 export default class Profile extends Component {
@@ -25,7 +25,7 @@ constructor(props)
 
 render()
 {
-  AsyncStorage.getItem('MainData')
+  Storage.getItem('MainData')
     .then(res =>{
      if( res !== null){
 

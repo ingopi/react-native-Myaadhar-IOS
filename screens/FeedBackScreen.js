@@ -3,7 +3,7 @@ import LottieView from 'lottie-react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import Storage from 'react-native-expire-storage';
 import Loader from '../utils/Loader';
 import {
     View,
@@ -86,7 +86,7 @@ export default class ReferralPage extends Component
 
 
 
-        AsyncStorage.getItem('MainData')
+        Storage.getItem('MainData')
         .then(res =>{
          if( res !== null){
     

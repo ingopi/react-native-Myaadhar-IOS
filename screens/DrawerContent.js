@@ -13,15 +13,15 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BlurView} from "@react-native-community/blur";
-
+import Storage from 'react-native-expire-storage';
 import RadialGradient from 'react-native-radial-gradient';
 export function DrawerContent(props) {
 
   const loggedOut = () =>{
     
      
-    AsyncStorage.removeItem('MainData');
-    props.navigation.navigate('SignInScreen');
+    Storage.removeItem('MainData');
+    props.navigation.navigate('SplashScreen');
 
   }
   return (
@@ -78,54 +78,7 @@ export function DrawerContent(props) {
                             onPress={() => {props.navigation.navigate('Profile')}}
                         />
 
-                      
-                         <DrawerItem 
-                            icon={({color, size}) => (
-                                <Icon 
-                                name="scan-outline"
-                                color="#00237D"
-                                size={size}
-                                />
-                            )}
-                            label="UPLOAD ASSETS"
-                            onPress={() => {props.navigation.navigate('ScanYourAsset')}}
-                        />
-                        <DrawerItem 
-                            icon={({color, size}) => (
-                                <Icon 
-                                name="chatbubble-ellipses-outline"
-                                color="#00237D"
-                                size={size}
-                                />
-                            )}
-                            label="CRM"
-                            onPress={() => {props.navigation.navigate('CrmScreen')}}
-                        />
-                        
-                        <DrawerItem 
-                            icon={({color, size}) => (
-                                <Icon 
-                               name="finger-print-outline"
-                               color="#00237D"
-                                size={size}
-                                />
-                            )}
-                            label="IT HELPDESK"
-                            onPress={() => {props.navigation.navigate('SaphireScreen')}}
-                        />
-                        <DrawerItem 
-                            icon={({color, size}) => (
-                                <Icon 
-                                name="body-outline" 
-                                color="#00237D"
-                                size={size}
-                                />
-                            )}
-                            label="REFFER JOB"
-                            onPress={() => {props.navigation.navigate('ReferralPage')}}
-                        />
-
-                          <DrawerItem 
+<DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
                                 name="add-outline" 
@@ -137,19 +90,21 @@ export function DrawerContent(props) {
                             onPress={() => {props.navigation.navigate('Workline')}}
                         />
 
-                           <DrawerItem 
+
+<DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
-                                name="key-outline" 
+                                name="construct-outline" 
                                 color="#00237D"
                                 size={size}
                                 />
                             )}
-                            label="PASSWORD RESET"
-                            onPress={() => {props.navigation.navigate('PasswordReset')}}
+                          
+                           
+                            label="AADHAR NEO"
+                        onPress={() => {props.navigation.navigate('neoScreen')}}
                         />
-
-<DrawerItem 
+  <DrawerItem 
                             icon={({color, size}) => (
                                 <Icon 
                                 name="card-outline" 
@@ -162,6 +117,102 @@ export function DrawerContent(props) {
                             label="BUSINESS CARD"
                         onPress={() => {props.navigation.navigate('BusinessCard')}}
                         />
+                      
+                  
+                      <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="scan-outline"
+                                color="#00237D"
+                                size={size}
+                                />
+                            )}
+                            label="UPLOAD ASSETS"
+                            onPress={() => {props.navigation.navigate('ScanYourAsset')}}
+                        />
+                       <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="chatbubble-ellipses-outline"
+                                color="#00237D"
+                                size={size}
+                                />
+                            )}
+                            label="CRM"
+                            onPress={() => {props.navigation.navigate('CrmScreen')}}
+                        />
+                      <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="key-outline" 
+                                color="#00237D"
+                                size={size}
+                                />
+                            )}
+                            label="PASSWORD RESET"
+                            onPress={() => {props.navigation.navigate('PasswordReset')}}
+                        />
+
+                       
+                        
+                    
+                        <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="body-outline" 
+                                color="#00237D"
+                                size={size}
+                                />
+                            )}
+                            label="REFFER JOB"
+                            onPress={() => {props.navigation.navigate('ReferralPage')}}
+                        />
+
+                          
+<DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="layers-outline" 
+                                color="#00237D"
+                                size={size}
+                                />
+                            )}
+                          
+                           
+                            label="HGS"
+                        onPress={() => {props.navigation.navigate('hgsScreen')}}
+                        />
+                
+
+                      
+                      <DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                                name="rocket-outline" 
+                                color="#00237D"
+                                size={size}
+                                />
+                            )}
+                          
+                           
+                            label="ADMIN 4 U"
+                        onPress={() => {props.navigation.navigate('adminScreen')}}
+                        />
+
+                     
+<DrawerItem 
+                            icon={({color, size}) => (
+                                <Icon 
+                               name="finger-print-outline"
+                               color="#00237D"
+                                size={size}
+                                />
+                            )}
+                            label="IT HELPDESK"
+                            onPress={() => {props.navigation.navigate('SaphireScreen')}}
+                        />
+
+                     
                       
                     </Drawer.Section>
                 
